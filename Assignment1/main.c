@@ -1,54 +1,22 @@
 #include <stdio.h>
+#include <math.h>
+
+// Function to calculate surface area
+double calculateSurfaceArea(double radius) {
+    return 4 * M_PI * radius * radius;
+}
 
 int main() {
-    int num1, num2;
-    char operator;
-    int result;
+    double radius, surfaceArea;
 
-    printf("**** Nj Simple Calculator ****\n");
-    printf("------------------------------\n");
-    printf("\n");
-    printf("Enter first integer: ");
-    scanf("%d", &num1);
-
-    printf("Enter an operator (+, -, *, /, %%): ");
-    scanf(" %c", &operator);  // Notice the space before %c to consume any leftover newline
-
-    printf("Enter second integer: ");
-    scanf("%d", &num2);
-
-    switch (operator) {
-        case '+':
-            result = num1 + num2;
-            printf("Result: %d + %d = %d\n", num1, num2, result);
-            break;
-        case '-':
-            result = num1 - num2;
-            printf("Result: %d - %d = %d\n", num1, num2, result);
-            break;
-        case '*':
-            result = num1 * num2;
-            printf("Result: %d * %d = %d\n", num1, num2, result);
-            break;
-        case '/':
-            if (num2 == 0) {
-                printf("Error: Division by zero is undefined.\n");
-            } else {
-                result = num1 / num2;
-                printf("Result: %d / %d = %d\n", num1, num2, result);
-            }
-            break;
-        case '%':
-            if (num2 == 0) {
-                printf("Error: Modulus by zero is undefined.\n");
-            } else {
-                result = num1 % num2;
-                printf("Result: %d %% %d = %d\n", num1, num2, result);
-            }
-            break;
-        default:
-            printf("Error: Invalid operator.\n");
+    printf("Enter the radius of the sphere: ");
+    if (scanf("%lf", &radius) != 1 || radius < 0) {
+        printf("Invalid input. Radius must be a non-negative number.\n");
+        return 1;
     }
+
+    surfaceArea = calculateSurfaceArea(radius);
+    printf("Surface Area of the sphere = %.4lf square units\n", surfaceArea);
 
     return 0;
 }
